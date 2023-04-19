@@ -13,6 +13,17 @@ return new class extends Migration
     {
         Schema::create('medical_clinics', function (Blueprint $table) {
             $table->id();
+            $table->string('pref_name');
+            $table->string('type'); // 区分
+            $table->string('name');
+            $table->string('zip');
+            $table->text('address');
+            $table->string('tel')->nullable();
+            $table->string('fax')->nullable();
+            $table->string('num_beds')->nullable();
+            $table->double('lat');
+            $table->double('lng');
+            $table->json('accepts');
             $table->timestamps();
         });
     }

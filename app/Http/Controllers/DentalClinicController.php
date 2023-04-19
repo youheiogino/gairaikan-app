@@ -99,8 +99,7 @@ class DentalClinicController extends Controller
             $feature["properties"]["fax"] = $item->fax;
 
             $feature["properties"]["accepts"] = json_decode($item->accepts); // TODO MySQLでJSON使えなかったっけ？
-            // $feature["properties"]["accepts"] = $item->accepts; // MySQLでJSON使えなかったっけ？
-            // $feature["properties"]["id"] = $item->id;
+            // $feature["properties"]["accepts"] = $item->accepts;
             // $feature["id"] = $item->id;
 
             array_push($features, $feature);

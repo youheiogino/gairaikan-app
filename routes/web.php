@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\DentalClinicController;
+use App\Http\Controllers\MedicalClinicController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,5 +20,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('dental/geojson/{like}', [DentalClinicController::class, 'geojson']); // resourceより先に書く。
+Route::get('/dental/geojson/{like}', [DentalClinicController::class, 'geojson']);
 Route::get('/dental', [DentalClinicController::class, 'index']);
+
+Route::get('/medical/geojson/{like}', [MedicalClinicController::class, 'geojson']);
+Route::get('/medical', [MedicalClinicController::class, 'index']);

@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>届出受理医療機関名簿（歯科）の可視化</title>
+  <title>届出受理医療機関名簿（医科）の可視化</title>
   <style>
     body {
       padding: 0;
@@ -111,7 +111,7 @@
       }
     ).addTo(map);
 
-    fetch('/dental/geojson/' + params.like)
+    fetch('/medical/geojson/' + params.like)
       .then(response => response.json())
       .then(data => {
         var geojsonLayer = L.geoJSON(data, {
