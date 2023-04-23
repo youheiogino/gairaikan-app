@@ -23,7 +23,7 @@ return new class extends Migration
             $table->string('num_beds')->nullable();
             $table->double('lat');
             $table->double('lng');
-            $table->json('accepts');
+            $table->longText('accepts');
             $table->timestamps();
         });
     }
