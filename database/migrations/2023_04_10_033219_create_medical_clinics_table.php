@@ -21,8 +21,7 @@ return new class extends Migration
             $table->string('tel')->nullable();
             $table->string('fax')->nullable();
             $table->string('num_beds')->nullable();
-            $table->double('lat');
-            $table->double('lng');
+            $table->point('location');
             $table->longText('accepts');
             $table->timestamps();
         });

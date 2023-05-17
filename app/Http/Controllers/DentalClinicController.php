@@ -78,10 +78,9 @@ class DentalClinicController extends Controller
         // where address like "%相模原%"
         // and JSON_EXTRACT(accepts, "$[*].code") like "%根切顕微%"
 
-        $dents = DentalClinic::where('address', 'LIKE', '%' . $like . '%')
-            ->whereNotNull('lat')
-            ->whereNotNull('lng')
-            ->get();
+        $dents = DentalClinic::all();//where('address', 'LIKE', '%' . $like . '%')
+            // ->whereNotNull('location')
+            // ->get();
 
         $features = [];
 
@@ -90,7 +89,7 @@ class DentalClinicController extends Controller
             $feature["type"] = "Feature";
 
             $feature["geometry"]["type"] = "Point";
-            $feature["geometry"]["coordinates"] = [$item->lng, $item->lat];
+            $feature["geometry"]["coordinates"] = [$item->location->longitude, $item->location->latitude];
 
             $feature["properties"]["name"] = $item->name;
             $feature["properties"]["address"] = $item->address;
@@ -98,9 +97,7 @@ class DentalClinicController extends Controller
             $feature["properties"]["tel"] = $item->tel;
             $feature["properties"]["fax"] = $item->fax;
 
-            $feature["properties"]["accepts"] = json_decode($item->accepts); // TODO MySQLでJSON使えなかったっけ？
-            // $feature["properties"]["accepts"] = $item->accepts;
-            // $feature["id"] = $item->id;
+            $feature["properties"]["accepts"] = json_decode($item->accepts);
 
             array_push($features, $feature);
         }
@@ -109,7 +106,7 @@ class DentalClinicController extends Controller
         $geojson["type"] = "FeatureCollection";
         $geojson["features"] = $features;
 
-        return response()->json($geojson);
-        // return $geojson;
+        // return response()->json($geojson);
+        return $geojson;
     }
 }

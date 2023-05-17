@@ -203,7 +203,7 @@
         map.fitBounds(geojsonLayer.getBounds());
 
         var markers = L.markerClusterGroup({
-          maxClusterRadius: 2,
+          maxClusterRadius: 50,
           spiderfyDistanceMultiplier: 2 // 同一緯度経度のときspiderfyを広げる
         });
         markers.addLayer(geojsonLayer);
